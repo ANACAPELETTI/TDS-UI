@@ -26,15 +26,15 @@ export class AuthService {
       this.tokensRevokeurl = `http://localhost:8080/tokens/revoke`;
     }
 
-  // teste(usuario: string, senha: string){
-  //   const headers = new HttpHeaders()
-  //   .append('Content-Type', 'application/x-www-form-urlencoded')
-  //   .append('Authorization', 'Basic YW5ndWxhcjpAbmd1bEByMA==');
+  teste(usuario: string, senha: string){
+    const headers = new HttpHeaders()
+    .append('Content-Type', 'application/x-www-form-urlencoded')
+    .append('Authorization', 'Basic YW5ndWxhcjpAbmd1bEByMA==');
 
-  //   const body = `username=${usuario}&password=${senha}&grant_type=password`;
-
-  //   return this.http.post<any>(this.oauthTokenUrl, body, { headers, withCredentials: true });
-  // }
+    const body = `client=angular&username=${usuario}&password=${senha}&grant_type=password`;
+    console.log(body);
+    return this.http.post<any>(this.oauthTokenUrl, body, { headers, withCredentials: true });
+  }
 
   login(usuario: string, senha: string): Promise<void> {
     const headers = new HttpHeaders()

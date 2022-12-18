@@ -67,5 +67,8 @@ constructor(
         this.errorHandler.handle(erro);
       });
   }
+  test(usuario: string, senha: string){
+    this.auth.teste(usuario, senha).subscribe((resultado)=>{console.log(resultado)});
+  }
 }
 

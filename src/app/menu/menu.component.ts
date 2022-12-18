@@ -32,7 +32,8 @@ export class MenuComponent {
                             },
                             {
                               label: 'Tema',
-                              icon: 'pi pi-fw pi-paperclip'
+                              icon: 'pi pi-fw pi-paperclip',
+                              routerLink: ['/home/temas']
                             },
                         ]
                     },
@@ -46,8 +47,14 @@ export class MenuComponent {
                 label: 'Temas',
                 icon: 'pi pi-fw pi-pencil',
                 items: [
-                    {label: 'Ver temas', icon: 'pi pi-fw pi-book'},
-                    {label: 'Meus temas', icon: 'pi pi-fw pi-file-edit'}
+                    {label: 'Ver temas',
+                    icon: 'pi pi-fw pi-book',
+                    routerLink: ['/home/verTemas']
+                    },
+                    {label: 'Meus temas',
+                    icon: 'pi pi-fw pi-file-edit',
+                    routerLink: ['/home/meusTemas']
+                    }
                 ]
             },
             {

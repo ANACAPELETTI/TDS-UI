@@ -28,7 +28,7 @@
             <th pSortableColumn="name" style="min-width:15rem">Nome <p-sortIcon field="name"></p-sortIcon></th>
             <th>Imagem</th>
             <th pSortableColumn="category" style="min-width:10rem">Número <p-sortIcon field="category"></p-sortIcon></th>
-            <th pSortableColumn="classification" style="min-width:10rem">Classificação <p-sortIcon field="classification"></p-sortIcon></th>
+            <th pSortableColumn="classification" style="min-width:10rem">Pontuação <p-sortIcon field="classification"></p-sortIcon></th>
             <th pSortableColumn="inventoryStatus" style="min-width:10rem">Status <p-sortIcon field="inventoryStatus"></p-sortIcon></th>
             <th></th>
           </tr>
@@ -54,7 +54,7 @@
 </div>
 
 
-<p-dialog [(visible)]="productDialog" [style]="{width: '450px'}" header="Product Details" [modal]="true" styleClass="p-fluid">
+<p-dialog [(visible)]="productDialog" [style]="{width: '450px'}" header="Professor" [modal]="true" styleClass="p-fluid">
     <ng-template pTemplate="content">
         <div class="field">
             <label for="name">Name</label>

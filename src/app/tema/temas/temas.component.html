@@ -1,0 +1,85 @@
+<p-toast></p-toast>
+<div class="card">
+  <p-toolbar styleClass="mb-4 gap-2">
+      <ng-template pTemplate="left">
+          <button pButton pRipple label="New" icon="pi pi-plus" class="p-button-success mr-2" (click)="openNew()"></button>
+          <button pButton pRipple label="Delete" icon="pi pi-trash" class="p-button-danger" (click)="deletarOrientadoresSelecionados()" [disabled]="!pessoaSelecionada || !pessoaSelecionada.length"></button>
+      </ng-template>
+  </p-toolbar>
+  <p-table #dt [value]="orientadores" [rows]="10" [paginator]="true" [globalFilterFields]="['pessoa_name','pessoa.pessoa_pontuacao']" [tableStyle]="{'min-width': '75rem'}"
+  selectionMode="single" [(selection)]="pessoaSelecionada" [rowHover]="true" dataKey="id"
+      currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" [showCurrentPageReport]="true">
+      <ng-template pTemplate="caption">
+        <div class="flex align-items-center justify-content-between">
+            <h5 class="m-0">Temas Cadastrados</h5>
+            <span class="p-input-icon-left">
+                <i class="pi pi-search"></i>
+                <input pInputText type="text" (input)="dt.filterGlobal($event, 'contains')" placeholder="Search..." />
+            </span>
+        </div>
+    </ng-template>
+    <ng-template pTemplate="header">
+        <tr>
+          <th style="width: 4rem">
+              <p-tableHeaderCheckbox></p-tableHeaderCheckbox>
+          </th>
+          <th pSortableColumn="name" style="min-width:15rem">Nome <p-sortIcon field="name"></p-sortIcon></th>
+          <th pSortableColumn="aluno" style="min-width:10rem">Aluno <p-sortIcon field="aluno"></p-sortIcon></th>
+          <th pSortableColumn="orientador" style="min-width:10rem">Orientador <p-sortIcon field="orientador"></p-sortIcon></th>
+          <th pSortableColumn="coordenador" style="min-width:10rem">Coordenador <p-sortIcon field="coordenador"></p-sortIcon></th>
+          <th></th>
+        </tr>
+    </ng-template>
+      <ng-template pTemplate="body" let-orientador>
+          <tr>
+              <td>
+                  <p-tableCheckbox [value]="orientador"></p-tableCheckbox>
+              </td>
+              <td>{{orientador.tema_name}}</td>
+              <td>{{orientador.tema_aluno}}</td>
+              <td>{{orientador.tema_orientador}}</td>
+              <td>{{orientador.tema_coordenador}}</td>
+              <td>
+                  <button pButton pRipple icon="pi pi-pencil" class="p-button-rounded p-button-success mr-2" (click)="editOrientador(orientador)"></button>
+                  <button pButton pRipple icon="pi pi-trash" class="p-button-rounded p-button-warning" (click)="deletarOrientador(orientador)"></button>
+              </td>
+          </tr>
+      </ng-template>
+  </p-table>
+</div>
+
+<p-dialog [(visible)]="productDialog" [style]="{width: '450px'}" header="Tema" [modal]="true" styleClass="p-fluid">
+  <ng-template pTemplate="content">
+      <div class="field">
+          <label for="name">Name</label>
+          <input type="text" pInputText id="name" [(ngModel)]="pessoa.tema_name" required autofocus />
+          <small class="p-error" *ngIf="submitted && !pessoa.tema_name">Nome é requerido.</small>
+      </div>
+      <div class="field">
+        <label for="inventoryStatus">Orientador</label>
+        <p-dropdown [(ngModel)]="statuses[0]" inputId="inventoryStatus" [options]="statuses" placeholder="Select">
+            <ng-template let-option pTemplate="item">
+                <span [class]="'product-badge status-' + option.value">{{option.label}}</span>
+            </ng-template>
+        </p-dropdown>
+      </div>
+      <div class="field">
+        <label for="inventoryStatus">Coorientador</label>
+        <p-dropdown [(ngModel)]="statuses[0]" inputId="inventoryStatus" [options]="statuses" placeholder="Select">
+            <ng-template let-option pTemplate="item">
+                <span [class]="'product-badge status-' + option.value">{{option.label}}</span>
+            </ng-template>
+        </p-dropdown>
+      </div>
+      <div class="field">
+        <label for="name">Aluno</label>
+        <input type="text" pInputText id="name" [(ngModel)]="pessoa.tema_aluno" required />
+        <small class="p-error" *ngIf="submitted && !pessoa.tema_aluno">Telefone é requerido.</small>
+      </div>
+  </ng-template>
+  <ng-template pTemplate="footer">
+    <button pButton pRipple label="Cancel" icon="pi pi-times" class="p-button-text" (click)="hideDialog()"></button>
+    <button pButton pRipple label="Save" icon="pi pi-check" class="p-button-text" (click)="saveProduct()"></button>
+  </ng-template>
+</p-dialog>
+<p-confirmDialog [style]="{width: '450px'}"></p-confirmDialog>

@@ -5,36 +5,31 @@ import { MessageService } from 'primeng/api';
 
 export interface IPessoa{
   id: number,
-  pessoa_name: string,
-  pessoa_telefone: string,
-  pessoa_status: string,
-  pessoa_imagem_link: string,
-  pessoa_pontuacao: number,
-  statuses: string
+  tema_name: string,
+  tema_orientador: string,
+  tema_aluno: string,
+  tema_coordenador: string
 }
 
 @Component({
-  selector: 'app-pessoa-cadastro',
-  templateUrl: './pessoa-cadastro.component.html',
-  providers: [MessageService, ConfirmationService],
-  styleUrls: ['./pessoa-cadastro.component.css']
+  selector: 'app-temas',
+  templateUrl: './temas.component.html',
+  styleUrls: ['./temas.component.css']
 })
 
-export class PessoaCadastroComponent implements OnInit {
-
+export class TemasComponent {
   inventoryStatus!: Array<T>;
   pessoa! : IPessoa;
   setValue() {
-    console.log(this.pessoa!.pessoa_name);
+    console.log(this.pessoa!.tema_name);
   }
 
   savePessoa() {
-    if (this.pessoa.pessoa_name.trim()) {
+    if (this.pessoa.tema_name.trim()) {
         if (this.pessoa.id) {
             this.messageService.add({severity:'success', summary: 'Successful', detail: 'Product Updated', life: 3000});
         }
         else {
-            this.pessoa.pessoa_imagem_link = 'product-placeholder.svg';
             this.messageService.add({severity:'success', summary: 'Successful', detail: 'Product Created', life: 3000});
         }
 
@@ -60,30 +55,24 @@ export class PessoaCadastroComponent implements OnInit {
   orientadores: IPessoa[] = [
     {
       id: 1,
-      pessoa_name: "Vera",
-      pessoa_telefone: "45 988264663",
-      pessoa_status: "Ativo",
-      pessoa_imagem_link: "vera.png",
-      pessoa_pontuacao: 3,
-      statuses: "ALUNO"
+      tema_name: "Teste 1",
+      tema_orientador: "Evandro Alves Nakajima",
+      tema_aluno: "Ana Paula Capeletti Ramos Almeida",
+      tema_coordenador: "Giuvane Conti"
     },
     {
       id: 2,
-      pessoa_name: "Davi",
-      pessoa_telefone: "45 988264663",
-      pessoa_status: "Ativo",
-      pessoa_imagem_link: "davi.png",
-      pessoa_pontuacao: 4,
-      statuses: "PROFESSOR"
+      tema_name: "Teste 2",
+      tema_orientador: "Evandro Alves Nakajima",
+      tema_aluno: "Ana Paula Capeletti Ramos Almeida",
+      tema_coordenador: "Giuvane Conti"
     },
     {
       id: 3,
-      pessoa_name: "Giuvane",
-      pessoa_telefone: "45 988264663",
-      pessoa_status: "Ativo",
-      pessoa_imagem_link: "giuvane.png",
-      pessoa_pontuacao: 5,
-      statuses: "COORDENADOR"
+      tema_name: "Teste 3",
+      tema_orientador: "Evandro Alves Nakajima",
+      tema_aluno: "Ana Paula Capeletti Ramos Almeida",
+      tema_coordenador: ""
     }
   ]
 
@@ -91,19 +80,17 @@ export class PessoaCadastroComponent implements OnInit {
 
   ngOnInit() {
     this.statuses = [
-      {label: 'ALUNO', value: 'aluno'},
-      {label: 'PROFESSOR', value: 'professor'},
-      {label: 'COORDENADOR', value: 'coordenador'}
+      {label: 'GIUVANE CONTI', value: 'Giuvane Conti'},
+      {label: 'EVANDRO ALVES NAKAJIMA', value: 'Evandro Alves Nakajima'},
+      {label: 'THIAGO NAVES', value: 'Thiago Naves'}
     ];
 
     this.pessoa = {
       id: 0,
-      pessoa_name: '',
-      pessoa_telefone: '',
-      pessoa_status: '',
-      pessoa_imagem_link: '',
-      pessoa_pontuacao: 0,
-      statuses: ''
+      tema_name: '',
+      tema_orientador: '',
+      tema_aluno: '',
+      tema_coordenador: ''
     }
   }
 
@@ -114,7 +101,7 @@ export class PessoaCadastroComponent implements OnInit {
 
   deletarOrientador(orientador: IPessoa){
     this.confirmationService.confirm({
-      message: 'Você quer mesmo deletar ' + orientador.pessoa_name + '?',
+      message: 'Você quer mesmo deletar ' + orientador.tema_name + '?',
       header: 'Confirmar',
       icon: 'pi pi-exclamation-triangle',
       accept: () => {
@@ -140,7 +127,7 @@ export class PessoaCadastroComponent implements OnInit {
 
   deletarOrientadoresSelecionados() {
     this.confirmationService.confirm({
-      message: 'Você tem certeza que quer deletar esse professor?',
+      message: 'Você tem certeza que quer deletar esse tema?',
       header: 'Confirmar',
       icon: 'pi pi-exclamation-triangle',
       accept: () => {

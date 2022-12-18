@@ -39,8 +39,10 @@ import { MoneyHttp } from './seguranca/money-http';
 import { ErrorHandlerService } from './core/error-handler.service';
 import { ConfirmationService, MessageService } from 'primeng/api';
 import { SegurancaRoutingModule } from './seguranca/seguranca-routing.module';
-import { TemasComponent } from './temas/temas.component';
+import { TemasComponent } from './tema/temas/temas.component';
 import { SegurancaModule } from './seguranca/seguranca.module';
+import { VerTemasComponent } from './tema/ver-temas/ver-temas.component';
+import { MeusTemasComponent } from './tema/meus-temas/meus-temas.component';
 
 @NgModule({
   declarations: [
@@ -51,6 +53,8 @@ import { SegurancaModule } from './seguranca/seguranca.module';
     MenuComponent,
     PessoaCadastroComponent,
     TemasComponent,
+    VerTemasComponent,
+    MeusTemasComponent
   ],
   imports: [
     BrowserModule,

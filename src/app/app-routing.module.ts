@@ -7,6 +7,10 @@ import { NgModule, Component } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { OrientadoresComponent } from './orientadores/orientadores.component';
 import { NaoAutorizadoComponent } from './core/naoAutorizado.component';
+import { TemasComponent } from './tema/temas/temas.component';
+import { VerTemasComponent } from './tema/ver-temas/ver-temas.component';
+import { MeusTemasComponent } from './tema/meus-temas/meus-temas.component';
+//import { MeusTemasComponent } from './tema/meus-temas/meus-temas.component';
 
 const routes: Routes =[
   {
@@ -34,9 +38,18 @@ const routes: Routes =[
         component: PessoaCadastroComponent
       },
       {
-        path:'nao-autorizado',
-        component: NaoAutorizadoComponent
+        path:'temas',
+        component: TemasComponent
       },
+      {
+        path:'verTemas',
+        component: VerTemasComponent
+      }
+      ,
+      {
+        path:'meusTemas',
+        component: MeusTemasComponent
+      }
     ]
   },
 ];
