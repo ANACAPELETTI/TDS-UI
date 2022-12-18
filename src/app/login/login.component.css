@@ -1,0 +1,32 @@
+#messagePopup{
+    position: absolute;
+    top: 40px; right: 40px;
+}
+
+p-button {
+  display: block;
+  margin-top: 20px;
+  text-align: center;
+}
+
+.text-input{
+  width: 241px;
+}
+
+a {
+  display: block;
+  margin-top: 20px;
+  text-align: center;
+}
+
+.card {
+  align-items: center;
+}
+
+#background {
+  width: 100%;
+  height: 600px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

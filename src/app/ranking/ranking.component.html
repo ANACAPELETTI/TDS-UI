@@ -1,0 +1,35 @@
+<p-carousel [value]="profs" [numVisible]="3" [numScroll]="3" [circular]="false" [responsiveOptions]="responsiveOptions">
+  <ng-template pTemplate="header">
+    <h5>Ranking dos professores</h5>
+  </ng-template>
+  <ng-template let-prof pTemplate="item">
+      <div class="product-item">
+          <div class="product-item-content">
+              <div class="p-mb-3">
+                  <img  class="product-image" src={{prof.prof_image}} alt={{prof.prof_name}}></div>
+                  <div class="card">
+                    <div class="percent" style="--color:#008744; --num:90;">
+                        <div class="ball"></div>
+                        <svg>
+                            <circle cx="70" cy="70" r="70"></circle>
+                            <circle cx="70" cy="70" r="70"></circle>
+                        </svg>
+                        <div class="number">
+                            <h2>90<span>%</span></h2>
+                        </div>
+                    </div>
+                </div>
+              <div>
+                <h4 class="p-mb-1">{{prof.prof_title}}</h4>
+                  <h6 class="p-mt-0 p-mb-3">{{prof.prof_description}}</h6>
+
+                  <div class="car-buttons p-mt-5">
+                      <p-button type="button" styleClass="p-button p-button-rounded p-mr-2" icon="pi pi-at" (onClick)="showEmail(prof.product_email)"></p-button>
+                      <p-button type="button" styleClass="p-button-success p-button-rounded p-mr-2" icon="pi pi-phone" (onClick)="showTelefone(prof.prof_telefone)"></p-button>
+                      <p-button type="button" styleClass="p-button-help p-button-rounded" icon="pi pi-cog"></p-button>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </ng-template>
+</p-carousel>

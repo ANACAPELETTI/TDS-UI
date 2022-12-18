@@ -1,0 +1,18 @@
+<p-messages id="messagePopup"></p-messages>
+<div id="background">
+
+  <div class="card">
+    <h3>Login</h3>
+    <span class="p-float-label">
+        <input id="float-input-invalid" type="text" pInputText class="ng-valid ng-dirty text-input" required #usuario>
+        <label for="float-input-invalid">Username</label>
+    </span>
+
+    <h4>Password</h4>
+    <p-password [toggleMask]="true" required #senha></p-password>
+
+    <a href="">Redefinir Senha</a>
+
+    <p-button label="Entrar" (click)="login(usuario.value, senha.value); senha.value = ''"></p-button>
+  </div>
+</div>
