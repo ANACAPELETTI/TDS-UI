@@ -31,11 +31,11 @@ export class PessoaCadastroComponent implements OnInit {
   savePessoa() {
     if (this.pessoa.pessoa_name.trim()) {
         if (this.pessoa.id) {
-            this.messageService.add({severity:'success', summary: 'Successful', detail: 'Product Updated', life: 3000});
+            this.messageService.add({severity:'success', summary: 'Successful', detail: 'User Updated', life: 3000});
         }
         else {
             this.pessoa.pessoa_imagem_link = 'product-placeholder.svg';
-            this.messageService.add({severity:'success', summary: 'Successful', detail: 'Product Created', life: 3000});
+            this.messageService.add({severity:'success', summary: 'Successful', detail: 'User Created', life: 3000});
         }
 
         this.orientadores = [...this.orientadores];
@@ -120,14 +120,14 @@ export class PessoaCadastroComponent implements OnInit {
       accept: () => {
           this.orientadores = this.orientadores.filter(val => val.id !== orientador.id);
           this.pessoaSelecionada = [];
-          this.messageService.add({severity:'success', summary: 'Successful', detail: 'Product Deleted', life: 3000});
+          this.messageService.add({severity:'success', summary: 'Successful', detail: 'User Deleted', life: 3000});
       }
     });
   }
 
   saveProduct() {
     this.submitted = true;
-    this.messageService.add({severity:'success', summary: 'Sucesso', detail: 'Pessoa Alterada', life: 3000});
+    this.messageService.add({severity:'success', summary: 'Sucesso', detail: 'User Alterada', life: 3000});
     this.orientadores = [...this.orientadores];
     this.productDialog = false;
   }
@@ -146,7 +146,7 @@ export class PessoaCadastroComponent implements OnInit {
       accept: () => {
           this.orientadores = this.orientadores.filter(val => !this.pessoaSelecionada.includes(val));
           this.pessoaSelecionada = [];
-          this.messageService.add({severity:'success', summary: 'Successful', detail: 'Products Deleted', life: 3000});
+          this.messageService.add({severity:'success', summary: 'Successful', detail: 'User Delete', life: 3000});
       }
     });
   }

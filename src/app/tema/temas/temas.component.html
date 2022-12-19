@@ -50,14 +50,14 @@
 
 <p-dialog [(visible)]="productDialog" [style]="{width: '450px'}" header="Tema" [modal]="true" styleClass="p-fluid">
   <ng-template pTemplate="content">
-      <div class="field">
-          <label for="name">Name</label>
-          <input type="text" pInputText id="name" [(ngModel)]="pessoa.tema_name" required autofocus />
-          <small class="p-error" *ngIf="submitted && !pessoa.tema_name">Nome é requerido.</small>
-      </div>
+    <div class="field">
+      <label for="name">Name</label>
+      <input type="text" pInputText id="name" [(ngModel)]="pessoa.tema_name" required autofocus />
+      <small class="p-error" *ngIf="submitted && !pessoa.tema_name">Nome é requerido.</small>
+    </div>
       <div class="field">
         <label for="inventoryStatus">Orientador</label>
-        <p-dropdown [(ngModel)]="statuses[0]" inputId="inventoryStatus" [options]="statuses" placeholder="Select">
+        <p-dropdown [(ngModel)]="pessoa.tema_orientador" inputId="inventoryStatus" [options]="statuses" placeholder="Select">
             <ng-template let-option pTemplate="item">
                 <span [class]="'product-badge status-' + option.value">{{option.label}}</span>
             </ng-template>
@@ -65,21 +65,24 @@
       </div>
       <div class="field">
         <label for="inventoryStatus">Coorientador</label>
-        <p-dropdown [(ngModel)]="statuses[0]" inputId="inventoryStatus" [options]="statuses" placeholder="Select">
+        <p-dropdown [(ngModel)]="pessoa.tema_coordenador" inputId="inventoryStatus" [options]="statuses" placeholder="Select">
             <ng-template let-option pTemplate="item">
                 <span [class]="'product-badge status-' + option.value">{{option.label}}</span>
             </ng-template>
         </p-dropdown>
       </div>
       <div class="field">
-        <label for="name">Aluno</label>
-        <input type="text" pInputText id="name" [(ngModel)]="pessoa.tema_aluno" required />
-        <small class="p-error" *ngIf="submitted && !pessoa.tema_aluno">Telefone é requerido.</small>
+        <label for="inventoryStatus">Aluno</label>
+        <p-dropdown [(ngModel)]="pessoa.tema_aluno" inputId="inventoryStatus" [options]="alunos" placeholder="Select">
+            <ng-template let-option pTemplate="item">
+                <span [class]="'product-badge status-' + option.value">{{option.label}}</span>
+            </ng-template>
+        </p-dropdown>
       </div>
   </ng-template>
   <ng-template pTemplate="footer">
     <button pButton pRipple label="Cancel" icon="pi pi-times" class="p-button-text" (click)="hideDialog()"></button>
-    <button pButton pRipple label="Save" icon="pi pi-check" class="p-button-text" (click)="saveProduct()"></button>
+    <button pButton pRipple label="Save" icon="pi pi-check" class="p-button-text" (click)="CriarTrabalho()"></button>
   </ng-template>
 </p-dialog>
 <p-confirmDialog [style]="{width: '450px'}"></p-confirmDialog>

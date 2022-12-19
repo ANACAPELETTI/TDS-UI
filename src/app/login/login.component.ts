@@ -4,11 +4,8 @@ import {MessageService} from 'primeng/api';
 import { ErrorHandlerService } from 'src/app/core/error-handler.service';
 import { Router } from '@angular/router';
 import { JwtHelperService } from '@auth0/angular-jwt';
-
-interface IProfs{
-  value: string,
-  senha: string
-}
+import { LoginUsuarioService } from '../services/usuario/loginUsuario/login-usuario.service';
+import { LocalStorageService } from '../services/localStorage/local-storage.service';
 
 @Component({
   selector: 'app-login',
@@ -44,31 +41,22 @@ constructor(
     private auth: AuthService,
     private errorHandler: ErrorHandlerService,
     private router: Router,
+    private loginUsuarioService : LoginUsuarioService,
+    private localStorageService : LocalStorageService
     ) {};
-
-
-  profs : IProfs[] = [
-    {
-      value: "a2153726",
-      senha: "1234"
-    }
-  ]
 
   ngOnInit() {
   };
 
-  login(usuario: string, senha: string) {
-    this.auth.login(usuario, senha)
-      .then(() => {
-        // this.messageService.add({severity:'info', summary:'Sucess', detail:'Login Sucess'});
-        this.router.navigate(['home']);
-      })
-      .catch(erro=> {
-        this.errorHandler.handle(erro);
-      });
-  }
-  test(usuario: string, senha: string){
-    this.auth.teste(usuario, senha).subscribe((resultado)=>{console.log(resultado)});
+  Login(usuario: string, senha: string){
+    this.loginUsuarioService.Execute({senha: senha, RA: usuario}).subscribe((retorno)=>{
+      // console.log(retorno.token);
+      if(retorno.refreshToken){
+        this.localStorageService.clear();//Limpar o localStorage
+        this.localStorageService.set("token",retorno.token); //salva no localStorage o token
+        this.router.navigate(['/home']); //redireciona o usuário para login
+      }
+    });
   }
 }
 

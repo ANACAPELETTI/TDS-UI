@@ -1,0 +1,33 @@
+<p-toast></p-toast>
+<div class="card">
+  <p-table #dt [value]="orientadores" [rows]="10" [paginator]="true" [globalFilterFields]="['pessoa_name','pessoa.pessoa_pontuacao']" [tableStyle]="{'min-width': '75rem'}"
+  selectionMode="single" [(selection)]="pessoaSelecionada" [rowHover]="true" dataKey="id"
+      currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" [showCurrentPageReport]="true">
+      <ng-template pTemplate="caption">
+        <div class="flex align-items-center justify-content-between">
+            <h5 class="m-0">Seus Temas</h5>
+            <span class="p-input-icon-left">
+                <i class="pi pi-search"></i>
+                <input pInputText type="text" (input)="dt.filterGlobal($event, 'contains')" placeholder="Search..." />
+            </span>
+        </div>
+    </ng-template>
+    <ng-template pTemplate="header">
+        <tr>
+          <th pSortableColumn="name" style="min-width:15rem">Nome <p-sortIcon field="name"></p-sortIcon></th>
+          <th pSortableColumn="aluno" style="min-width:10rem">Aluno <p-sortIcon field="aluno"></p-sortIcon></th>
+          <th pSortableColumn="orientador" style="min-width:10rem">Orientador <p-sortIcon field="orientador"></p-sortIcon></th>
+          <th pSortableColumn="coordenador" style="min-width:10rem">Coordenador <p-sortIcon field="coordenador"></p-sortIcon></th>
+          <th></th>
+        </tr>
+    </ng-template>
+      <ng-template pTemplate="body" let-orientador>
+          <tr>
+              <td>{{orientador.tema_name}}</td>
+              <td>{{orientador.tema_aluno}}</td>
+              <td>{{orientador.tema_orientador}}</td>
+              <td>{{orientador.tema_coordenador}}</td>
+          </tr>
+      </ng-template>
+  </p-table>
+</div>

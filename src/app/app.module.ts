@@ -7,11 +7,11 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { PessoaCadastroComponent } from './pessoa/pessoa-cadastro/pessoa-cadastro.component';
 import { OrientadoresComponent } from './orientadores/orientadores.component';
-import { PessoaPesquisaComponent } from './pessoa/pessoa-pesquisa/pessoa-pesquisa.component';
 
 import { TabViewModule } from 'primeng/tabview';
 import { MenuModule } from 'primeng/menu';
 import { MenubarModule } from 'primeng/menubar';
+import { TableModule } from 'primeng/table';
 import { CarouselModule } from 'primeng/carousel';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
@@ -26,8 +26,7 @@ import { ButtonModule } from 'primeng/button';
 //import { MessageModule } from 'primeng/message';
 import { MenuComponent } from './menu/menu.component';
 import { ToolbarModule } from 'primeng/toolbar';
-import { ToastModule } from 'primeng/toast';
-import { TableModule } from 'primeng/table';
+import {ToastModule} from 'primeng/toast';
 import { DialogModule } from 'primeng/dialog';
 import { DropdownModule } from 'primeng/dropdown';
 import { RadioButtonModule } from 'primeng/radiobutton';
@@ -47,7 +46,6 @@ import { MeusTemasComponent } from './tema/meus-temas/meus-temas.component';
 @NgModule({
   declarations: [
     AppComponent,
-    PessoaPesquisaComponent,
     OrientadoresComponent,
     RankingComponent,
     MenuComponent,

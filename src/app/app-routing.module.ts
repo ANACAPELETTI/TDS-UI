@@ -1,5 +1,5 @@
 import { PessoaCadastroComponent } from './pessoa/pessoa-cadastro/pessoa-cadastro.component';
-import { PessoaPesquisaComponent } from './pessoa/pessoa-pesquisa/pessoa-pesquisa.component';
+//import { PessoaPesquisaComponent } from './pessoa/pessoa-pesquisa/pessoa-pesquisa.component';
 import { MenuComponent } from './menu/menu.component';
 import { LoginComponent } from './login/login.component';
 import { RankingComponent } from './ranking/ranking.component';
